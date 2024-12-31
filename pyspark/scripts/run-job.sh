@@ -15,10 +15,8 @@ SPARK_JOB_PARAMS=(${@:6})
 printf -v SPARK_ARGS '"%s",' "${SPARK_JOB_PARAMS[@]}"
 
 # Start the job
-JOB_RUN_ID=$(aws emr-serverless start-job-run \ 
-    --name ${ENTRY_POINT} \ 
-    --application-id $APPLICATION_ID \ 
-    --execution-role-arn $JOB_ROLE_ARN \ 
+JOB_RUN_ID=$(aws emr-serverless start-job-run --name ${ENTRY_POINT} --application-id $APPLICATION_ID \
+    --execution-role-arn $JOB_ROLE_ARN \
     --job-driver '{
         "sparkSubmit": {
             "entryPoint": "s3://'${S3_BUCKET}'/github/pyspark/jobs/'${JOB_VERSION}'/'${ENTRY_POINT}'",
