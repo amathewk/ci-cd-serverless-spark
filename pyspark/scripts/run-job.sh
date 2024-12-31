@@ -23,7 +23,7 @@ JOB_RUN_ID=$(aws emr-serverless start-job-run --name ${ENTRY_POINT} --applicatio
             "entryPointArguments": ['${SPARK_ARGS%,}'],
             "sparkSubmitParameters": "--py-files s3://'${S3_BUCKET}'/github/pyspark/jobs/'${JOB_VERSION}'/job_files.zip"
         }
-    }' \ 
+    }' \
     --configuration-overrides '{
         "monitoringConfiguration": {
             "s3MonitoringConfiguration": {
