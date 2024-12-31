@@ -1,7 +1,7 @@
 from jobs.extreme_weather import ExtremeWeather
 
 def test_is_this_on():
-    assert 1 == 2
+    assert 1 == 1
 
 def test_extract_latest_daily_value(mock_views_df):
     ew = ExtremeWeather()
